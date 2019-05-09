@@ -2,6 +2,7 @@
 #include "delay.h"
 #include "usart.h"
 #include "tftlcd.h"
+#include "led.h"
 #include "ring.h"
 
 void Screen_Display(u8 pos)
@@ -23,6 +24,7 @@ void Screen_Display(u8 pos)
  {	
 	u8 i = 0; 
 	
+	LED_Init();
 	SysTick_Init(72);
 	delay_init();	    
 	uart_init(9600);
@@ -34,6 +36,9 @@ void Screen_Display(u8 pos)
 	{	
 		delay_ms(1000);		  
 		Screen_Display(i);
+		
+		LED_Clear();
+		Set_Led_Number(i);
 		
 		screen_log_show();
 		i++;
