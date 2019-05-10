@@ -54,16 +54,20 @@ void screen_log_show()
 	u16 col = 0;
 	char szOutput[30] = {'\0'};
 	
+	//LCD_Fill(0, 0, tftlcd_data.width, tftlcd_data.height, BACK_COLOR);
+	
 	if(log_list.nBegin == log_list.nEnd)
 	{
 		return;
 	}	
 	
 	if(log_list.nCycle == 1)
-	{			
+	{
+		/*		
 		sprintf(szOutput, "[Show]<b=%d><e=%d>.", log_list.nBegin, log_list.nEnd);
 		FRONT_COLOR = BLACK;
 		LCD_ShowString(LCD_ROW_BEGIN, 30, tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);					
+		*/
 		
 		if(log_list.nBegin < log_list.nEnd)
 		{				

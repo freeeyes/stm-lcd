@@ -4,6 +4,7 @@
 #include "tftlcd.h"
 #include "led.h"
 #include "ring.h"
+#include "key.h"
 
 void Screen_Display(u8 pos)
 {
@@ -22,13 +23,16 @@ void Screen_Display(u8 pos)
 
  int main(void)
  {	
-	u8 i = 0; 
+	u8 i              = 0; 
+	u8 key            = 0;
+	char szOutput[30] = {'\0'};
 	
 	LED_Init();
 	SysTick_Init(72);
 	delay_init();	    
 	uart_init(9600);
 	TFTLCD_Init(); 
+	KEY_Init();
 	 
 	screen_log_init();
 	 
@@ -41,6 +45,40 @@ void Screen_Display(u8 pos)
 		Set_Led_Number(i);
 		
 		screen_log_show();
+		
+		key=KEY_Scan(0);   //É¨Ãè°´¼ü
+		switch(key)
+		{
+			case KEY_UP: 
+			{
+				sprintf(szOutput, "[KEY]KEY_UP.");
+				FRONT_COLOR = BLACK;
+				LCD_ShowString(LCD_ROW_BEGIN, 30, tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);	
+				break;				
+			}
+			case KEY_DOWN: 
+			{
+				sprintf(szOutput, "[KEY]KEY_DOWN.");
+				FRONT_COLOR = BLACK;
+				LCD_ShowString(LCD_ROW_BEGIN, 30, tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);		
+				break;				
+			}
+			case KEY_LEFT:
+			{
+				sprintf(szOutput, "[KEY]KEY_LEFT.");
+				FRONT_COLOR = BLACK;
+				LCD_ShowString(LCD_ROW_BEGIN, 30, tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);			
+				break;								
+			}
+			case KEY_RIGHT:
+			{
+				sprintf(szOutput, "[KEY]KEY_RIGHT.");
+				FRONT_COLOR = BLACK;
+				LCD_ShowString(LCD_ROW_BEGIN, 30, tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);	
+				break;				
+			}
+		}		
+		
 		i++;
 	}
  }
