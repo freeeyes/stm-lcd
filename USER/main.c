@@ -5,6 +5,10 @@
 #include "led.h"
 #include "ring.h"
 #include "key.h"
+#include "wdg.h"
+
+#define TIME_DELAY        10
+#define LCD_TIME_INTERVAL 100
 
 void Screen_Display(u8 pos)
 {
@@ -23,9 +27,17 @@ void Screen_Display(u8 pos)
 
  int main(void)
  {	
-	u8 i              = 0; 
-	u8 key            = 0;
-	char szOutput[30] = {'\0'};
+	u8  i              = 0; 
+	u8  key            = 0;
+	u8  nLcdShow       = 0;
+	int nSecend        = 0;
+	char szOutput[30]  = {'\0'};
+	
+	//check dog
+	if(RCC_GetFlagStatus(RCC_FLAG_IWDGRST) != RESET)
+  {
+		RCC_ClearFlag();
+  }	
 	
 	LED_Init();
 	SysTick_Init(72);
@@ -33,18 +45,29 @@ void Screen_Display(u8 pos)
 	uart_init(9600);
 	TFTLCD_Init(); 
 	KEY_Init();
+	IWDG_Init(IWDG_Prescaler_256, 157);
 	 
 	screen_log_init();
 	 
 	while(1)
 	{	
-		delay_ms(1000);		  
-		Screen_Display(i);
+		delay_ms(TIME_DELAY);		  
 		
-		LED_Clear();
-		Set_Led_Number(i);
-		
-		screen_log_show();
+		if(nLcdShow == LCD_TIME_INTERVAL)
+		{
+			Screen_Display(nSecend);
+			
+			LED_Clear();
+			Set_Led_Number(nSecend);
+			
+			screen_log_show();
+			nLcdShow = 0;
+			nSecend++;
+		}
+		else
+		{
+			nLcdShow++;
+		}
 		
 		key=KEY_Scan(0);   //É¨Ãè°´¼ü
 		switch(key)
@@ -80,6 +103,8 @@ void Screen_Display(u8 pos)
 		}		
 		
 		i++;
+		
+		IWDG_Feed();
 	}
  }
 
