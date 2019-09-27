@@ -1,6 +1,7 @@
 #ifndef RING_LOG_H
 #define RING_LOG_H
 
+#include "stdio.h"
 #include "tftlcd.h"
 #include "string.h"
 

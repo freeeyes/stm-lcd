@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\SCREEN</IncludePath>
+              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\HARDWARE\LED;..\HARDWARE\SCREEN;..\uIP-1.0\uip;..\APP\spi;..\Public;..\APP\ENC28J60;..\HARDWARE\Dog;..\APP\ball;..\APP\time;..\APP\rtc;..\APP\adc;..\APP\adc_temp;..\uIP-APP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -424,25 +424,20 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\SCREEN\tftlcd.c</FilePath>
             </File>
+            <File>
+              <FileName>wdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Dog\wdg.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>SYSTEM</GroupName>
           <Files>
             <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
-            </File>
-            <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\sys\sys.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -480,6 +475,11 @@
               <FilePath>..\STM32F10x_FWLib\src\stm32f10x_dbgmcu.c</FilePath>
             </File>
             <File>
+              <FileName>stm32f10x_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_iwdg.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32f10x_rcc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STM32F10x_FWLib\src\stm32f10x_rcc.c</FilePath>
@@ -488,6 +488,36 @@
               <FileName>stm32f10x_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STM32F10x_FWLib\src\stm32f10x_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_bkp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_bkp.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_pwr.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -498,6 +528,136 @@
               <FileName>README.TXT</FileName>
               <FileType>5</FileType>
               <FilePath>..\README.TXT</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>APP</GroupName>
+          <Files>
+            <File>
+              <FileName>enc28j60.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\ENC28J60\enc28j60.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\spi\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\time\time.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\adc\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_temp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\adc_temp\adc_temp.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\rtc\rtc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Public</GroupName>
+          <Files>
+            <File>
+              <FileName>system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Public\system.c</FilePath>
+            </File>
+            <File>
+              <FileName>SysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Public\SysTick.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Public\usart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>uIP-APP</GroupName>
+          <Files>
+            <File>
+              <FileName>clock-arch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-APP\clock-arch.c</FilePath>
+            </File>
+            <File>
+              <FileName>tapdev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-APP\tapdev.c</FilePath>
+            </File>
+            <File>
+              <FileName>tcp_client_demo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-APP\tcp_client_demo.c</FilePath>
+            </File>
+            <File>
+              <FileName>tcp_demo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-APP\tcp_demo.c</FilePath>
+            </File>
+            <File>
+              <FileName>tcp_server_demo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-APP\tcp_server_demo.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>uIP</GroupName>
+          <Files>
+            <File>
+              <FileName>psock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\psock.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\uip.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip_arp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\uip_arp.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip-fw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\uip-fw.c</FilePath>
+            </File>
+            <File>
+              <FileName>uiplib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\uiplib.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip-neighbor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\uip-neighbor.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip-split.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uIP-1.0\uip\uip-split.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,11 +1,17 @@
-#include "sys.h"
-#include "delay.h"
+#include "system.h"
+#include "SysTick.h"
 #include "usart.h"
 #include "tftlcd.h"
 #include "led.h"
 #include "ring.h"
 #include "key.h"
 #include "wdg.h"
+
+#include "rtc.h" 
+#include "adc.h"
+#include "adc_temp.h"
+#include "enc28j60.h"
+#include "tapdev.h"
 
 #define TIME_DELAY        10
 #define LCD_TIME_INTERVAL 100
@@ -42,12 +48,24 @@ void Screen_Display(u8 pos)
 	LED_Init();
 	SysTick_Init(72);
 	delay_init();	    
-	uart_init(9600);
+	USART1_Init(9600);
 	TFTLCD_Init(); 
 	KEY_Init();
 	IWDG_Init(IWDG_Prescaler_256, 157);
 	 
 	screen_log_init();
+	
+	RTC_Init();
+	ADCx_Init();	
+	ADC_Temp_Init();	
+	
+	/*
+	while(tapdev_init())	//≥ı ºªØENC28J60¥ÌŒÛ
+	{								   
+		LCD_ShowString(10,50,tftlcd_data.width,tftlcd_data.height,16,"ENC28J60 Init Error!");	 
+		delay_ms(1000);
+	}	
+	*/
 	 
 	while(1)
 	{	

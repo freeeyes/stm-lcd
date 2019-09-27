@@ -555,7 +555,6 @@ void LCD_Display_Dir(u8 dir)
 
 void TFTLCD_Init(void)
 {
-	u16 i = 0;
 	TFTLCD_GPIO_Init();
 	TFTLCD_FSMC_Init();
 	
@@ -2046,8 +2045,11 @@ void LCD_DrawFRONT_COLOR(u16 x,u16 y,u16 color)
 //返回值:此点的颜色
 u16 LCD_ReadPoint(u16 x,u16 y)
 {
- 	u16 r=0,g=0,b=0;
+	u16 r=0;
 	u16 r1,r2,r3;
+#if defined TFTLCD_ILI9341 || defined TFTLCD_HX8357DN
+ 	u16 g=0,b=0;
+#endif	
 	
 	if(x>=tftlcd_data.width||y>=tftlcd_data.height)return 0;	//超过了范围,直接返回		     
 	LCD_Set_Window(x, y, x, y);
@@ -2144,12 +2146,9 @@ u16 LCD_ReadPoint(u16 x,u16 y)
 	LCD_Set_Window(x, y, x, y);
 	LCD_WriteCmd(0x0202);     		 				    
  	r=LCD_ReadData();  		  						//实际坐标颜色
+	return r;		
 #endif
-	
-#ifdef TFTLCD_NT5510	
-	
-#endif	
- 	return r;						
+
 }
 
 //画线
