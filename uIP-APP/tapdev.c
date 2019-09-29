@@ -53,7 +53,10 @@ const u8 mymac[6]={0x04,0x02,0x35,0x00,0x00,0x01};	//MAC地址
 u8 tapdev_init(void)
 {   	 
 	u8 i,res=0;					  
-	res=ENC28J60_Init((u8*)mymac);	//初始化ENC28J60					  
+	res=ENC28J60_Init((u8*)mymac);	//初始化ENC28J60
+
+	printf("[tapdev_init]res=%d.", res);
+	
 	//把IP地址和MAC地址写入缓存区
  	for (i = 0; i < 6; i++)uip_ethaddr.addr[i]=mymac[i];  
     //指示灯状态:0x476 is PHLCON LEDA(绿)=links status, LEDB(红)=receive/transmit

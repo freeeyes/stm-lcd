@@ -38,6 +38,7 @@
 #ifndef __TAPDEV_H__
 #define __TAPDEV_H__
 
+#include <stdio.h>
 #include <stdint.h>
 #include "system.h"
 

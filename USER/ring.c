@@ -75,7 +75,8 @@ void screen_log_show()
 			{
 				col = LCD_COL_BEGIN + LCD_COL_HIGTH * nPos;
 				FRONT_COLOR = log_list.info[i].ncolor;
-				sprintf(szOutput, "(%d)<%d>%s. b", nPos, i, log_list.info[i].m_data);
+				//sprintf(szOutput, "(%d)<%d>%s. b", nPos, i, log_list.info[i].m_data);
+				sprintf(szOutput, "%s", log_list.info[i].m_data);
 				LCD_ShowString(LCD_ROW_BEGIN, col,tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);
 				nPos++;
 			}
@@ -86,7 +87,8 @@ void screen_log_show()
 			{
 				col = LCD_COL_BEGIN + LCD_COL_HIGTH * nPos;
 				FRONT_COLOR = log_list.info[i].ncolor;
-				sprintf(szOutput, "(%d)<%d>%s. c", nPos, i, log_list.info[i].m_data);
+				//sprintf(szOutput, "(%d)<%d>%s. c", nPos, i, log_list.info[i].m_data);
+				sprintf(szOutput, "%s", log_list.info[i].m_data);
 				LCD_ShowString(LCD_ROW_BEGIN, col,tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);
 				nPos++;
 			}
@@ -95,7 +97,8 @@ void screen_log_show()
 			{
 				col = LCD_COL_BEGIN + LCD_COL_HIGTH * nPos;
 				FRONT_COLOR = log_list.info[i].ncolor;
-				sprintf(szOutput, "(%d)<%d>%s. c", nPos, i, log_list.info[i].m_data);
+				//sprintf(szOutput, "(%d)<%d>%s. c", nPos, i, log_list.info[i].m_data);
+				sprintf(szOutput, "%s", log_list.info[i].m_data);
 				LCD_ShowString(LCD_ROW_BEGIN, col,tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);
 				nPos++;
 			}
@@ -109,7 +112,8 @@ void screen_log_show()
 		{
 			col = LCD_COL_BEGIN + LCD_COL_HIGTH * nPos;
 			FRONT_COLOR = log_list.info[i].ncolor;
-			sprintf(szOutput, "(%d)<%d>%s.a", nPos, i, log_list.info[i].m_data);
+			//sprintf(szOutput, "(%d)<%d>%s.a", nPos, i, log_list.info[i].m_data);
+			sprintf(szOutput, "%s", log_list.info[i].m_data);
 			LCD_ShowString(LCD_ROW_BEGIN, col,tftlcd_data.width,tftlcd_data.height,16,(u8 *)szOutput);
 			nPos++;
 		}
