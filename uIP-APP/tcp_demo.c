@@ -12,7 +12,7 @@ void tcp_demo_appcall(void)
   	
 	switch(uip_conn->lport)//±¾µØ¼àÌý¶Ë¿Ú1200 
 	{
-		case HTONS(1200):
+		case HTONS(TCP_LISTEN_PORT):
 		    tcp_server_demo_appcall(); 
 			break;
 		default:						  

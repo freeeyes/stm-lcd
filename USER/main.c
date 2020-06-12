@@ -162,7 +162,7 @@ void uip_polling(void)
 	screen_log_add(BLUE, "Addr Config OK");	
 	
 	//set listen
-	uip_listen(HTONS(12002));
+	uip_listen(HTONS(TCP_LISTEN_PORT));
 	
 	screen_log_show();
 	
@@ -170,6 +170,7 @@ void uip_polling(void)
 	{	
 		delay_ms(TIME_DELAY);		  
 		
+		//处理网络信息
 		uip_polling();
 		
 		if(nLcdShow == LCD_TIME_INTERVAL)

@@ -4,8 +4,10 @@
    here. But we might need to include uipopt.h if we need the u8_t and
    u16_t datatypes. */
 #include "uipopt.h"
-#include "psock.h"
+#include "psock.h" 
 #include "system.h"
+
+#define TCP_LISTEN_PORT 12002
 
 //通信程序状态字(用户可以自己定义)  
 enum

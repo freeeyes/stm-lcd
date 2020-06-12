@@ -2217,7 +2217,7 @@ Image component sizes
       1356         64          0          8          0       8064   enc28j60.o
        228         22          0          1          0       1014   key.o
        710         50          0          0          0       5758   led.o
-       896        196          0         17          0     288657   main.o
+       896        196          0         17          0     288681   main.o
        172         22          0          0          0       1905   misc.o
        656         56          0          0        964       2129   ring.o
        914         42         24          4         10       5101   rtc.o
@@ -2239,9 +2239,9 @@ Image component sizes
        328         28          0          0          0       1649   system_stm32f10x.o
        136         12          0          4          0       1098   systick.o
        132         48          6          0          0       1906   tapdev.o
-       670        228          0          1        200      11626   tcp_client_demo.o
+       670        228          0          1        200      11650   tcp_client_demo.o
         88         22          0          0          0        901   tcp_demo.o
-       620        228          0          1        200       4693   tcp_server_demo.o
+       620        228          0          1        200       4717   tcp_server_demo.o
       1984         94       7142         12          0       9772   tftlcd.o
        184         22          0          4          0       2026   time.o
         52          0          0          0          0       1686   timer.o
@@ -2251,7 +2251,7 @@ Image component sizes
         44          0          0          0          0        896   wdg.o
 
     ----------------------------------------------------------------------
-     18358       2096       7524        140       8320     419660   Object Totals
+     18358       2096       7524        140       8320     419732   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         32          0          2          4          2          0   (incl. Padding)
 
@@ -2299,8 +2299,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     19496       2174       7524        144       8320     411084   Grand Totals
-     19496       2174       7524        144       8320     411084   ELF Image Totals
+     19496       2174       7524        144       8320     411156   Grand Totals
+     19496       2174       7524        144       8320     411156   ELF Image Totals
      19496       2174       7524        144          0          0   ROM Totals
 
 ==============================================================================
